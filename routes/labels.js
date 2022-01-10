@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const uploader = require('../config/cloudinary')
 //labels routes
 
 const Label = require('../models/label.model')
@@ -18,7 +18,15 @@ const renderLabelsList = async (req, res) => {
 
 const createLabel = async ( req, res) =>{
     try{
-       await Label.create(req.body);
+       await Label.create({
+        name : req.body.name,
+        city : req.body.city,
+        country : req.body.country,
+        street : req.body.street,
+        streetNumber : req.body.streetNumber,
+        zipCode : req.body.zipCode,        
+        logo:req.file.path  
+       });
         res.redirect('/dashboard/labels')
     }catch(err){
         console.error(err)
@@ -26,6 +34,7 @@ const createLabel = async ( req, res) =>{
 }
 router.get('/',renderLabelsList )
 router.get('/create', (req, res) => res.render('labels/createLabels'))
+router.post('/create',uploader.single("logo"), createLabel);
 router.post('/create', createLabel);
 
 

@@ -1,4 +1,4 @@
-<form method="post" action="/dashboard/labels/create">
+<form method="post" action="/dashboard/labels/create" enctype="multipart/form-data">
 
     <label for="name">the name : </label>
     <input type="text" name="name" id="name" required>
@@ -14,6 +14,9 @@
 
     <label for="zipCode">the zipCode : </label>
     <input type="text" name="zipCode" id="zipCode">
+
+    <label for="logo">picture</label>
+    <input type="file" name="logo" id="logo" />
 
     <button>Creation done</button>
 

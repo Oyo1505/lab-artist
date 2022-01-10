@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const uploader = require('../config/cloudinary')
-const Label = require('../models/label.model')
+
 //Artist routes
 const Artist = require('../models/artist.model')
 
