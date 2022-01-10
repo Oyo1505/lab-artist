@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const uploader = require('../config/cloudinary')
 const Label = require('../models/label.model')
 //Artist routes
 const Artist = require('../models/artist.model')
@@ -16,7 +17,8 @@ const creatArtist = async (req,res,next) => {
     try {const creation = await Artist.create({
         name : req.body.name,
         isBand : req.body.isBand === "on"? true : false,
-        description : req.body.description
+        description : req.body.description,
+        picture:req.file.path
     })
 
         //console.log(creation);
@@ -31,7 +33,7 @@ const creatArtist = async (req,res,next) => {
 
 router.get('/', renderArtistPage);
 router.get('/create', (req,res)=> res.render('artists/artistCreate'));
-router.post('/create', creatArtist);
+router.post('/create',uploader.single("picture"), creatArtist);
 router.get('/delete/:id', (req,res) => {
     Artist.findByIdAndDelete(req.params.id)
     .then((dbRes) => {

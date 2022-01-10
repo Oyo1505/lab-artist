@@ -1,14 +1,16 @@
-<form action="/dashboard/artist/create" method="post">
+<form action="/dashboard/artist/create" method="post" enctype="multipart/form-data">
 
     <label for="name">the name : </label>
     <input type="text" name="name" id="name" required>
 
-    
     <label for="isBand">the band : </label>
     <input type="checkbox" name="isBand" id="isBand">
 
     <label for="description">the description : </label>
     <input type="text" name="description" id="description">
+
+    <label for="picture">picture</label>
+    <input type="file" name="picture" id="picture" />
 
     <button>Creation done</button>
 
