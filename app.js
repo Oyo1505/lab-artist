@@ -23,7 +23,10 @@ require('./config')(app);
 // 👇 Start handling routes here
 const index = require('./routes/index');
 app.use('/', index);
-app.use('/dashboard',require('./routes/dashboard'));
+app.use('/dashboard',require('./routes/dashboard.router'));
+app.use('/dashboard/artist', require('./routes/artists.route'))
+app.use('/dashboard/labels', require('./routes/labels'))
+app.use('/dashboard/styles', require ('./routes/styles.route'))
 //app.use('/dashboard/labels',require('./routes/labels'));
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 //require('./error-handling')(app);

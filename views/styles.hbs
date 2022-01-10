@@ -1,0 +1,14 @@
+<h1>Styles</h1>
+<a href="/dashboard/styles/create">Create a Style</a>
+<ul>
+{{#each styles}}
+    <li>
+        <h3> Style name : {{this.name}}</h3>
+        <p> The Color : {{this.color}}</p>
+        <p> the wiki URL : {{this.wikiURL}}</p>
+        <a href="/dashboard/styles/delete/{{this._id}}">Delete</a>
+    </li>
+
+{{/each}}
+</ul>
+

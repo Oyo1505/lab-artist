@@ -29,8 +29,7 @@ const creatArtist = async (req,res,next) => {
     } 
 }
 
-router.get('/', (req,res,next)=> res.render('dashboard'));
-router.get('/artist', renderArtistPage);
+router.get('/', renderArtistPage);
 router.get('/create', (req,res)=> res.render('artists/artistCreate'));
 router.post('/create', creatArtist);
 router.get('/delete/:id', (req,res) => {
@@ -44,29 +43,24 @@ router.get('/delete/:id', (req,res) => {
     })
 });
 
-
-const renderLabelsList = async (req, res) => {
+router.get('/update/:id', async(req,res,next)=>{
     try{
-        const labels = await Label.find()
-        res.render('labels.hbs', {
-            labels : labels
-        });
-    }catch(err){
-        console.error(err)
+       const dbResp = await Artist.findById(req.params.id);
+       res.render('artists/artistUpdate', {artist : dbResp})
+    }catch(err){ 
+        console.error(err);
     }
-}
+})
 
-const createLabel = async ( req, res) =>{
+router.post("/update/:id", async(req,res,next)=>{
     try{
-       await Label.create(req.body);
-        res.redirect('/dashboard/labels')
+        await Artist.findByIdAndUpdate(req.params.id, req.body, {new:true});
+        res.redirect('/dashboard/artist')
     }catch(err){
-        console.error(err)
+        console.error(err);
     }
-}
-router.get('/labels',renderLabelsList )
-router.get('/labels/create', (req, res) => res.render('labels/createLabels'))
-router.post('/labels/create', createLabel);
+})
+
 
 
 module.exports = router

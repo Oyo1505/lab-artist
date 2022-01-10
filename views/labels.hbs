@@ -2,6 +2,9 @@
 <a href="/dashboard/labels/create">Create a Label</a>
 <ul>
 {{#each labels}}
-    <li>{{this.name}}</li>
+    <li>{{this.name}}
+        <a href="/dashboard/labels/delete/{{this._id}}">Delete</a>
+    </li>
+
 {{/each}}
 </ul>

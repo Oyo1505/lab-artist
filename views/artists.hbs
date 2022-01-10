@@ -1,4 +1,4 @@
-<a href="/dashboard/create">create Artist</a>
+<a href="/dashboard/artist/create">create Artist</a>
 <table>
     <tbody>
 {{#each artists}}
@@ -12,8 +12,13 @@
         <td>{{this.description}}</td>
         <td><img src="{{this.picture}}" alt="{{this.name}}" width="150px"></td>
         <td>
-            <a href="/dashboard/delete/{{this._id}}">
-                delete artist
+            <a href="/dashboard/artist/delete/{{this._id}}">
+                Delete Artist
+            </a>
+        </td>
+        <td>
+             <a href="/dashboard/artist/update/{{this._id}}">
+                Update Artist
             </a>
         </td>
     </tr>

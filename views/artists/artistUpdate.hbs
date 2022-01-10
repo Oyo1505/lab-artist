@@ -1,0 +1,15 @@
+<form action="/dashboard/artist/update/{{artist._id}}" method="post">
+
+    <label for="name">the name : </label>
+    <input type="text" name="name" id="name" value="{{artist.name}}" required>
+
+    
+    <label for="isBand">the band : </label>
+    <input type="checkbox" {{#if artist.isBand}} checked {{/if}} name="isBand" id="isBand">
+
+    <label for="description">the description : </label>
+    <input type="text" name="description" id="description" value="{{artist.description}}">
+
+    <button>Modify</button>
+
+</form>

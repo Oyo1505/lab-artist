@@ -6,6 +6,7 @@ const styleSchema = new Schema ({
     wikiURL:String,
 })
 
-const StyleModel  = model('Label', styleSchema);
+const StyleModel  = model('Style', styleSchema);
 
 module.exports = StyleModel;
+
