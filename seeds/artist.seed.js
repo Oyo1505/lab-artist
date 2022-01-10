@@ -1,6 +1,6 @@
 require("./../db/index")
 
-const async = require("hbs/lib/async");
+// const async = require("hbs/lib/async");
 const Artist = require("../models/artist.model");
 
 const artists = [{
