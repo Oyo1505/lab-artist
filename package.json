@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -e .js, .hbs ./servers.js" 
+    "dev": "nodemon -e .js, .hbs ./servers.js"
   },
   "keywords": [],
   "author": "",
