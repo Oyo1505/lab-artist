@@ -1,8 +1,6 @@
-
 const express = require('express');
-const { redirect } = require('express/lib/response');
 const router = express.Router();
-
+const Label = require('../models/label.model')
 //Artist routes
 const Artist = require('../models/artist.model')
 
@@ -46,9 +44,7 @@ router.get('/delete/:id', (req,res) => {
     })
 });
 
-//labels routes
 
-const Label = require('../models/label.model')
 const renderLabelsList = async (req, res) => {
     try{
         const labels = await Label.find()
@@ -60,8 +56,7 @@ const renderLabelsList = async (req, res) => {
     }
 }
 
-const createLabel = async (res, req) =>{
-    
+const createLabel = async ( req, res) =>{
     try{
        await Label.create(req.body);
         res.redirect('/dashboard/labels')
@@ -72,5 +67,6 @@ const createLabel = async (res, req) =>{
 router.get('/labels',renderLabelsList )
 router.get('/labels/create', (req, res) => res.render('labels/createLabels'))
 router.post('/labels/create', createLabel);
+
 
 module.exports = router
