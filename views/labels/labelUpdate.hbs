@@ -1,0 +1,20 @@
+<form method="post" action="/dashboard/labels/update/{{label._id}}">
+
+    <label for="name">the name : </label>
+    <input type="text" name="name" id="name" value="{{label.name}}" required>
+
+    <label for="city">the city : </label>
+    <input type="text" name="city" id="city" value="{{label.city}}">
+
+    <label for="country">the country : </label>
+    <input type="text" name="country" id="country" value="{{label.country}}">
+
+     <label for="streetNumber">the street Number : </label>
+    <input type="number" name="streetNumber" id="streetNumber" value="{{label.streetNumber}}">
+
+    <label for="zipCode">the zipCode : </label>
+    <input type="text" name="zipCode" id="zipCode" value="{{label.zipCode}}">
+
+    <button>Modify</button>
+
+</form>

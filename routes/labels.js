@@ -39,4 +39,22 @@ router.get('/delete/:id', async (req, res) => {
     }
 })
 
+
+router.get('/update/:id', async(req,res,next)=>{
+    try{
+       const dbResp = await Label.findById(req.params.id);
+       res.render('labels/labelUpdate', {label : dbResp})
+    }catch(err){ 
+        console.error(err);
+    }
+})
+
+router.post("/update/:id", async(req,res,next)=>{
+    try{
+        await Label.findByIdAndUpdate(req.params.id, req.body, {new:true});
+        res.redirect('/dashboard/labels')
+    }catch(err){
+        console.error(err);
+    }
+})
 module.exports = router

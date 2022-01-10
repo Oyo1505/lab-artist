@@ -1,10 +1,30 @@
 <h1>Labels</h1>
 <a href="/dashboard/labels/create">Create a Label</a>
-<ul>
-{{#each labels}}
-    <li>{{this.name}}
-        <a href="/dashboard/labels/delete/{{this._id}}">Delete</a>
-    </li>
 
-{{/each}}
-</ul>
+<table>
+    <tbody>
+        <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Street</th>
+        <th>Street number</th>
+        <th>Zipcode</th>
+        </tr>
+        {{#each labels}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.city}}</td>
+            <td>{{this.country}}</td>
+            <td>{{this.street}}</td>
+            <td>{{this.streetNumber}}</td>
+            <td>{{this.zipCode}}</td>
+            <td><a href="/dashboard/labels/update/{{this._id}}">Update</a></td>
+            <td><a href="/dashboard/labels/delete/{{this._id}}">Delete</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+        
