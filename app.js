@@ -26,6 +26,6 @@ app.use('/', index);
 app.use('/dashboard',require('./routes/dashboard'));
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
-require('./error-handling')(app);
+//require('./error-handling')(app);
 
 module.exports = app;
