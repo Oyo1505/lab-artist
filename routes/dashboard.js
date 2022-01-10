@@ -61,7 +61,7 @@ const renderLabelsList = async (req, res) => {
 }
 
 const createLabel = async (res, req) =>{
-    console.log(req.body)
+    
     try{
        await Label.create(req.body);
         res.redirect('/dashboard/labels')
