@@ -34,5 +34,15 @@ router.get('/', (req,res,next)=> res.render('dashboard'));
 router.get('/artist', renderArtistPage);
 router.get('/create', (req,res)=> res.render('artists/artistCreate'));
 router.post('/create', creatArtist);
+router.get('/delete/:id', (req,res) => {
+    Artist.findByIdAndDelete(req.params.id)
+    .then((dbRes) => {
+        console.log(dbRes);
+        res.redirect('/dashboard/artist');
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+});
 
 module.exports = router

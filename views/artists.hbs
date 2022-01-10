@@ -1,4 +1,22 @@
 <a href="/dashboard/create">create Artist</a>
+<table>
+    <tbody>
 {{#each artists}}
-{{this.name}}
+    <tr>
+        <td>{{this.name}}</td>
+        <td>
+            {{#if this.isBand}}
+                "Its a band"
+            {{/if }}
+        </td>
+        <td>{{this.description}}</td>
+        <td><img src="{{this.picture}}" alt="{{this.name}}" width="150px"></td>
+        <td>
+            <a href="/dashboard/delete/{{this._id}}">
+                delete artist
+            </a>
+        </td>
+    </tr>
 {{/each}}
+</tbody>
+</table>
