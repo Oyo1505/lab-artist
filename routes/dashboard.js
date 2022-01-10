@@ -1,5 +1,6 @@
 
-const express = require('express')
+const express = require('express');
+const { redirect } = require('express/lib/response');
 const router = express.Router();
 const Artist = require('../models/artist.model')
 
@@ -11,6 +12,27 @@ const renderArtistPage = async (req,res,next) => {
     catch (err){console.error(err)} 
 }
 
-router.get('/', (req,res,next)=> res.render('dashboard'))
+const creatArtist = async (req,res,next) => {
+    console.log(req.body);
+    try {const creation = await Artist.create({
+        name : req.body.name,
+        isBand : req.body.isBand === "on"? true : false,
+        description : req.body.description
+    })
+
+        //console.log(creation);
+       res.redirect('/dashboard/artist');
+       
+        }
+    catch (err){
+    console.error(err);
+    //res.redirect('/create');
+    } 
+}
+
+router.get('/', (req,res,next)=> res.render('dashboard'));
+router.get('/artist', renderArtistPage);
+router.get('/create', (req,res)=> res.render('artists/artistCreate'));
+router.post('/create', creatArtist);
 
 module.exports = router
